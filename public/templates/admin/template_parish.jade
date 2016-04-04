@@ -1,0 +1,25 @@
+doctype html
+html(lang="fr")
+
+  head
+    title #{__("page.admin.parish")} #{parish.name}
+    include includes/head_md.jade
+
+  body
+    
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-layout--fixed-drawer
+        header.mdl-layout__header
+            div.mdl-layout__header-row
+                block header
+                
+        div.mdl-layout__drawer
+            header=parish.name
+            nav.mdl-navigation
+                a(href="/admin/parish/"+parish.id+"/place").mdl-navigation__link.mdl-navigation__link--current.show-dialog
+                    span(data-badge=parish.places.length).mdl-badge=__('menu.places')
+                a(href="#").mdl-navigation__link.show-dialog=__('menu.events')
+                a(href="#").mdl-navigation__link.show-dialog=__('menu.celebrationTimes')
+                a(href="#").mdl-navigation__link.show-dialog=__('menu.reconciliationTimes')
+                    
+        main.main.mdl-layout__content
+            block content

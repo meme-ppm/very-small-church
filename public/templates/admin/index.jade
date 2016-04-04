@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+
+  head
+    title=__("page.admin.parishes")
+    include includes/head_md.jade
+
+  body
+    
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+        header.mdl-layout__header
+            div.mdl-layout__header-row
+                span.mdl-layout-title=__("page.admin.parishes")
+                div.mdl-layout-spacer
+                nav.mdl-navigation
+                    a(href="#").mdl-navigation__link.show-dialog=__('btn.create')
+                    
+        main.main.mdl-layout__content
+            section.content
+                ul.mdl-list
+                    each parish in parishes.rows
+                        li.mdl-list__item.mdl-shadow--2dp
+                            span.mdl-list__item-primary-content
+                                i.material-icons.mdl-list__item-avatar home
+                                a(href="admin/parish/"+parish.id)=parish.dataValues.name
+                    
+    
+    dialog.mdl-dialog
+        form(method="post", action="/admin/parish")
+            h4.mdl-dialog--title=__("page.admin.parish")
+            div.mdl-dialog__content
+                div.mdl-textfield.mdl-js-textfield
+                    input(type="text", name="name")#parish-name.mdl-textfield__input
+                    label(for="parish-name").mdl-textfield__label=__('form.name')
+        
+            div.mdl-dialog__actions
+                input(type="submit", value=__("btn.create")).mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--raised.mdl-button--accent.ct-dialog-send=__("btn.create")
+                button(type="button").mdl-button.close-dialog=__("btn.cancel")
+                
+    
+    
+                  
+
+                    

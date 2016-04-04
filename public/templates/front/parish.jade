@@ -1,0 +1,18 @@
+doctype html
+html(lang="fr")
+
+  head
+    title #{__("page.parish")} #{parish.name}
+    include includes/head_md.jade
+
+  body
+    
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+        header.mdl-layout__header
+            div.mdl-layout__header-row
+                 span.mdl-layout-title #{parish.name}
+                
+                    
+        main.main.mdl-layout__content
+            include includes/place.jade
+            include includes/gmap.jade

@@ -1,0 +1,16 @@
+{
+	"page.admin.parishes": "Vos paroisses",
+	"page.admin.parish": "Votre paroisse : ",
+	"page.admin.parish.place": "Vos lieux",
+	"page.admin.parish.place.create": "Créer un lieu",
+	"form.name": "Nom",
+	"form.address": "Adresse",
+	"btn.create": "Créer",
+	"btn.cancel": "Annuler",
+	"menu.places": "Vos lieux",
+	"menu.events": "Vos évènements",
+	"menu.celebrationTimes": "Les horaires des messes",
+	"menu.reconciliationTimes": "Les horaires des confessions",
+	"error.geocoding": "Impossible de géolocaliser votre adresse",
+	"page.parish": "page.parish"
+}

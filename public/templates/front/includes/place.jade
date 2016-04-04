@@ -1,0 +1,8 @@
+div.mdl-grid
+    div.mdl-cell.mdl-cell--8-col#map-place
+    div.mdl-cell.mdl-cell--4-col
+        each place, index in parish.places
+            div.place(class=index === 0 ? "":"hide")(data-lat=place.lat, data-lng=place.lng)
+                h1=place.name
+                p=place.address
+    
