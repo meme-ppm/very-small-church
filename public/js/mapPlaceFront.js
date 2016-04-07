@@ -3,6 +3,8 @@
 function MapPlace(){
     this.$pois = $('.place');
     this.currentPoi = this.$pois.first();
+    this.strPlaceId = "placeId";
+    this.currentMarker = null;
 }
 
 MapPlace.prototype.load = function(){
@@ -19,12 +21,28 @@ MapPlace.prototype.loadMap = function(){
 
 MapPlace.prototype.displayPois = function(){
     var that = this;
+    var isFirst = true;
     this.$pois.each(function(){
         var $poi = $(this);
+        var latLng = {lat: $poi.data('lat'), lng:$poi.data('lng')}
+
         var marker = new google.maps.Marker({
             map: that.gmap,
-            position : {lat: $poi.data('lat'), lng:$poi.data('lng')}
+            position : latLng,
+            placeId: $poi.attr('id'),
         });
+        marker.addListener('click', function(e){
+          if(this !== that.currentMarker){
+            that.gmap.panTo(this.getPosition());
+            $("#"+that.currentMarker.placeId).addClass('hide');
+            $("#"+this.placeId).removeClass('hide');
+            that.currentMarker = this;
+          }
+
+        })
+        if(isFirst){
+          that.currentMarker = marker;
+        }
     })
 }
 
