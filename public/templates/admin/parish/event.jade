@@ -1,0 +1,18 @@
+extends ../template_parish.jade
+
+block header
+    span.mdl-layout-title #{__("page.admin.parish.event")}
+    div.mdl-layout-spacer
+    nav.mdl-navigation
+        a(href="/admin/parish/"+parish.id+"/event/create").mdl-navigation__link.show-dialog=__('btn.create')
+
+block content
+  section.content
+    ul.mdl-list
+        each event in parish.events
+            li.mdl-list__item.mdl-shadow--2dp.mdl-list__item--two-line
+                span.mdl-list__item-primary-content
+                    i.material-icons.mdl-list__item-avatar home
+                    a(href="/admin/parish/"+parish.id+"/event/"+place.id)=event.title
+                    span.mdl-list__item-sub-title #{event.startDate} - #{event.endDate}
+            

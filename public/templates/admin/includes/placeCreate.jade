@@ -2,21 +2,23 @@ section.content.mdl-card.mdl-shadow--2dp
     form(method='post', action='/admin/parish/'+parish.id+'/place')
         div.mdl-card__supporting-text
             div.mdl-textfield.mdl-js-textfield
-                input(type="text", name="name")#name.mdl-textfield__input
+                input(type="text", name="name",value=payload.name)#name.mdl-textfield__input
                 label(for="name").mdl-textfield__label=__('form.name')
             div.mdl-textfield.mdl-js-textfield
-                input(type="text", name="address")#address.mdl-textfield__input
-                label(for="address").mdl-textfield__label=__('form.address')
+                input(type="text", name="addressFinal", value=payload.address)#address.mdl-textfield__input
+                label(for="addressFinal").mdl-textfield__label=__('form.address')
                 span.mdl-textfield__error.hide#address-geocoding-error=__('error.geocoding')
             div#map.map-place-create
-            input(type='hidden', name='lat')#lat
-            input(type='hidden', name='lng')#lng
-            input(type='hidden', name='parishId', value=parish.id)
+            input(type='hidden', name='lat', value=payload.lat)#lat
+            input(type='hidden', name='lng', value=payload.lng)#lng
+            input(type='hidden', name='address', value=payload.address)#address-final
+            input(type='hidden', name='parishId', value=payload==null?parish.id:payload.id)
             input(type='hidden', name='isAssociatedToParish', value='true')
-
+            input(type='hidden', name='id', value=payload.id)
+            
         div.mdl-card__actions.mdl-card--border
             div
             div.mdl-layout-spacer
-            input(type="submit",value=__('btn.create')).mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--raised.mdl-button--accent.ct-dialog-send=__("btn.create")
+            input(type="submit",value=__(payload.id == null ? "btn.create" : "btn.update")).mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--raised.mdl-button--accent.ct-dialog-send
         
 script(src="https://maps.googleapis.com/maps/api/js?callback=onMapInit", async, defer)

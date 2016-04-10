@@ -24,7 +24,18 @@ module.exports.list=function(callback){
 }
 
 module.exports.findOne = function(id, callback){
-    db.Parish.findOne({where: {id:parseInt(id)}, include: [Place]})
+    db.Parish.findOne({where: {id:parseInt(id)}, 
+                       include: [
+                                    {model:Place},
+                                    {model:Event/*, 
+                                     where: {dateStart:{$gt:new Date()}}, 
+                                     order:[
+                                            ['dateStart','ASC'],
+                                            ['dateEnd','ASC']
+                                           ]
+                                    */
+                                     }
+                                ]})
                 .then(function(parish){
                     callback(null, parish.get({plain:true}));
                 }).catch(function(err){

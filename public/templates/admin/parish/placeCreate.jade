@@ -1,7 +1,7 @@
 extends ../template_parish.jade
 
 block header
-    span.mdl-layout-title #{__("page.admin.parish.place.create")}
+    span.mdl-layout-title #{__(payload.id == null?"page.admin.parish.place.create":"page.admin.parish.place.update")}
 
 block content
   section.content

@@ -50,6 +50,7 @@ server.register(require('inert'), (err) => {
 });
 
 server.route(require('./routes/websiteAdminPlace'));
+server.route(require('./routes/websiteAdminEvent'));
 server.route(require('./routes/websiteAdmin'));
 
 server.route(require('./routes/websiteParish'));

@@ -8,11 +8,10 @@ html(lang="fr")
   body
     
     div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
-        header.mdl-layout__header
-            div.mdl-layout__header-row
-                 span.mdl-layout-title #{parish.name}
-                
                     
         main.main.mdl-layout__content
+            div#welcome
+                div#welcome-center
+                    h2=__('page.parish.welcome')
             include includes/place.jade
             include includes/gmap.jade

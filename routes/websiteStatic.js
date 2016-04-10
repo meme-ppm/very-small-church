@@ -20,5 +20,15 @@ module.exports = [
               lookupCompressed: true
           }
       }
-  },
+    },
+    {
+      method: 'GET',
+      path: '/public/img/{name*}',
+      handler: {
+          directory: {
+              path: 'public/img',
+              lookupCompressed: true
+          }
+      }
+    }
   ];

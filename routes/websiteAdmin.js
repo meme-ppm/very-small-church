@@ -32,9 +32,9 @@ module.exports = [
     handler:function(request, reply) {
         serviceParish.findOne(request.params.parishId, function(error, parish){
             if(parish.places == null || parish.places.length === 0){
-                reply.redirect('admin/parish/placeCreate', {parish:parish})
+                reply.view('admin/parish/placeCreate', {parish:parish, payload:{}, currentMenu:'place'})
             }else{
-                reply.view('admin/parish/place', {parish:parish});
+                reply.view('admin/parish/place', {parish:parish, currentMenu:'place'});
             }
         })
     }

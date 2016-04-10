@@ -12,6 +12,18 @@ module.exports.create=function(place, callback){
             });
 }
 
+module.exports.update=function(place, callback){
+    delete place.parishId;
+    db.Place.update(place, {where : {id: place.id}})
+            .then(function(count){
+                callback(null);
+            })
+            .catch(function(err){
+                log.d('impossible to create place: ', err);
+                callback(err);
+            });
+}
+
 module.exports.list=function(callback){
     db.Place.findAndCountAll()
             .then(function(places){

@@ -1,0 +1,41 @@
+extends ../template_parish.jade
+
+block header
+    span.mdl-layout-title #{__(payload.id == null?"page.admin.parish.event.create":"page.admin.parish.event.update")}
+
+block content
+  section.content
+    div.content.mdl-card.mdl-shadow--2dp
+    form(method='post', action='/admin/parish/'+parish.id+'/event')
+        div.mdl-card__supporting-text
+            div.mdl-textfield.mdl-js-textfield
+                input(type="text", name="title",value=payload.title)#name.mdl-textfield__input
+                label(for="title").mdl-textfield__label=__('form.title')
+                
+            div.mdl-textfield.mdl-js-textfield
+                input(type="text", name="dateStart", value=payload.dateStart)#date-start.mdl-textfield__input
+                label(for="date-start").mdl-textfield__label=__('form.dateStart')
+                
+            div.mdl-textfield.mdl-js-textfield
+                input(type="text", name="timeStart", value=payload.dateStart)#time-start.mdl-textfield__input
+                label(for="time-start").mdl-textfield__label=__('form.timeStart')
+                
+            div.mdl-textfield.mdl-js-textfield
+                input(type="text", name="dateEnd", value=payload.dateEnd)#date-end.mdl-textfield__input
+                label(for="date-end").mdl-textfield__label=__('form.dateEnd')
+                
+             div.mdl-textfield.mdl-js-textfield
+                input(type="text", name="timeEnd", value=payload.dateEnd)#time-end.mdl-textfield__input
+                label(for="time-end").mdl-textfield__label=__('form.timeEnd')
+            
+            div.mdl-textfield.mdl-js-textfield
+                textarea(class="mdl-textfield__input", id="description" name="description", rows="10")=payload.description
+                label(class="mdl-textfield__label", for="description") #{__("form.description")}
+            
+            input(type='hidden', name='parishId', value=payload==null?parish.id:payload.id)
+            input(type='hidden', name='id', value=payload.id)
+            
+        div.mdl-card__actions.mdl-card--border
+            div
+            div.mdl-layout-spacer
+            input(type="submit",value=__(payload.id == null ? "btn.create" : "btn.update")).mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--raised.mdl-button--accent.ct-dialog-send

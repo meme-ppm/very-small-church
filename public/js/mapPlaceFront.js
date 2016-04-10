@@ -41,7 +41,8 @@ MapPlace.prototype.displayPois = function(){
 
         })
         if(isFirst){
-          that.currentMarker = marker;
+            that.currentMarker = marker;
+            isFirst = false;
         }
     })
 }

@@ -15,9 +15,10 @@ html(lang="fr")
         div.mdl-layout__drawer
             header=parish.name
             nav.mdl-navigation
-                a(href="/admin/parish/"+parish.id+"/place").mdl-navigation__link.mdl-navigation__link--current.show-dialog
+                a(href="/admin/parish/"+parish.id+"/place", class=currentMenu==='place'?'mdl-navigation__link--current':'').mdl-navigation__link.show-dialog
                     span(data-badge=parish.places.length).mdl-badge=__('menu.places')
-                a(href="#").mdl-navigation__link.show-dialog=__('menu.events')
+                a(href="/admin/parish/"+parish.id+"/event",class=currentMenu==='event'?'mdl-navigation__link--current':'').mdl-navigation__link.show-dialog
+                    span(data-badge=parish.events.length).mdl-badge=__('menu.events')
                 a(href="#").mdl-navigation__link.show-dialog=__('menu.celebrationTimes')
                 a(href="#").mdl-navigation__link.show-dialog=__('menu.reconciliationTimes')
                     

@@ -2,6 +2,31 @@
     display: none!important;
 }
 
+#welcome{
+    background: url(../img/bougies.png) center no-repeat;
+    min-height: 300px;
+    width: 100%;
+    text-align: center;
+}
+#welcome #welcome-center{
+    padding-top:100px;
+}
+#welcome h2{
+    color:white;
+    background: rgba(11, 2, 6, 0.6);
+    padding:16px;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 #map-place{
     background: grey;
+}
+
+.place-global{
+ padding:0px 16px;   
+}
+.place{
+ padding: 0px 4px;   
 }
